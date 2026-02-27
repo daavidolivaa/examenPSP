@@ -7,6 +7,11 @@ import lombok.Getter;
 
 @Getter
 public class ServicioAutenticacion {
+    public static final String ERROR_LOG_PARTIDA = "Partida no existe";
+    private static final String AUTENTICAR = "autenticar";
+    public static final String EXITO = "EXITO";
+    public static final String FALLO = "FALLO";
+    public static final String DOS_PUNTOS = ":";
 
     private final Map<String, BloquePartida> partida = new HashMap<>();
 
@@ -27,14 +32,14 @@ public class ServicioAutenticacion {
 
         BloquePartida datos = partida.get(nombre);
         if (datos == null) {
-            UtilLog.escribirLog("Partida no existe" + nombre);
+            UtilLog.escribirLog(ERROR_LOG_PARTIDA + nombre);
             return false;
         }
 
         String salt = generarSalt(nombre);
         String hash = getHashConSalt(bloque, salt);
         boolean ok = datos.getHash().contentEquals(hash);
-        UtilLog.escribirLog("autenticar" + nombre + ":" + (ok ? "EXITO" : "FALLO"));
+        UtilLog.escribirLog(AUTENTICAR + nombre + DOS_PUNTOS + (ok ? EXITO : FALLO));
         return ok;
 
     }

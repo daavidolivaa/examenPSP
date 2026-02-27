@@ -12,3 +12,9 @@
 - He usado JUNIT
 
 ## Artefactos de la programación
+- Uso de Logs para errores
+- Uso de Hash
+- Uso de JUNIT
+
+## ELEMENTOS DESTACABLES DEL DESARROLLO
+- No he sido capaz de hacer el test de JUNIT
